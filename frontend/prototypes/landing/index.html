@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classroom-Manager – BBS 2 Leer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__brand">
+      <span class="site-header__logo" aria-hidden="true">🏫</span>
+      <span class="site-header__title">Classroom-Manager</span>
+    </div>
+    <nav class="site-header__nav" aria-label="Hauptnavigation">
+      <ul class="nav-list">
+        <li class="nav-list__item"><a class="nav-list__link" href="#klassen">Klassen</a></li>
+        <li class="nav-list__item"><a class="nav-list__link" href="#anwesenheiten">Anwesenheiten</a></li>
+        <li class="nav-list__item"><a class="nav-list__link" href="#kursbuch">Kursbuch</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="hero__title">Classroom-Manager</h1>
+      <p class="hero__subtitle">
+        Klassen, Anwesenheiten und Kursbuch der BBS 2 Leer – übersichtlich an einem Ort.
+      </p>
+    </section>
+
+    <section class="card-grid" aria-label="Funktionsübersicht">
+      <article id="klassen" class="card">
+        <div class="card__icon" aria-hidden="true">👥</div>
+        <h2 class="card__title">Klassen</h2>
+        <p class="card__text">
+          Alle Klassen und Schüler:innen im Überblick verwalten und schnell wiederfinden.
+        </p>
+      </article>
+
+      <article id="anwesenheiten" class="card">
+        <div class="card__icon" aria-hidden="true">✅</div>
+        <h2 class="card__title">Anwesenheiten</h2>
+        <p class="card__text">
+          Anwesenheiten pro Stunde erfassen und den Verlauf jederzeit nachvollziehen.
+        </p>
+      </article>
+
+      <article id="kursbuch" class="card">
+        <div class="card__icon" aria-hidden="true">📖</div>
+        <h2 class="card__title">Kursbuch</h2>
+        <p class="card__text">
+          Unterrichtsinhalte und Themen dokumentieren – digital statt auf Papier.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__text">&copy; 2026 Classroom-Manager Prototyp &middot; BBS 2 Leer</p>
+  </footer>
+</body>
+</html>
