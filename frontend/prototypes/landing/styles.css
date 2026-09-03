@@ -1,21 +1,44 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
 :root {
-  --cm-primary: #0d6efd;
-  --cm-primary-dark: #0a58ca;
-  --cm-text: #212529;
-  --cm-text-muted: #6c757d;
-  --cm-bg: #f8f9fa;
+  --cm-bg: #f2f4f8;
   --cm-surface: #ffffff;
-  --cm-border: #dee2e6;
+  --cm-text: #1b2430;
+  --cm-text-muted: #5b6472;
+  --cm-border: #c3c9d3;
+  --cm-primary: #1d4ed8;
+  --cm-primary-soft: rgba(29, 78, 216, 0.07);
+  --cm-on-primary: #ffffff;
 
   --cm-space-xs: 0.5rem;
-  --cm-space-sm: 1rem;
-  --cm-space-md: 1.5rem;
-  --cm-space-lg: 2.5rem;
+  --cm-space-sm: 0.75rem;
+  --cm-space-md: 1.25rem;
+  --cm-space-lg: 2rem;
   --cm-space-xl: 4rem;
 
-  --cm-radius: 0.75rem;
-  --cm-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --cm-radius: 0.625rem;
+
+  --cm-header-height: 3.5rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cm-bg: #12161c;
+    --cm-surface: #1a1f27;
+    --cm-text: #e7eaf1;
+    --cm-text-muted: #9aa4b2;
+    --cm-border: #39424f;
+    --cm-primary: #7aa2ff;
+    --cm-primary-soft: rgba(122, 162, 255, 0.1);
+    --cm-on-primary: #12161c;
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
 * {
   box-sizing: border-box;
@@ -23,116 +46,203 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--cm-text);
   background-color: var(--cm-bg);
+  color: var(--cm-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
 }
 
-/* Header */
+:focus-visible {
+  outline: 3px solid var(--cm-primary);
+  outline-offset: 2px;
+}
 
-.site-header {
+.sprite {
+  display: none;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--cm-space-xs);
+  left: var(--cm-space-xs);
+  z-index: 2;
+  padding: var(--cm-space-xs) var(--cm-space-md);
+  border-radius: var(--cm-radius);
+  background-color: var(--cm-primary);
+  color: var(--cm-on-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
-  flex-direction: column;
-  gap: var(--cm-space-sm);
+  flex-wrap: wrap;
+  gap: var(--cm-space-sm) var(--cm-space-lg);
   align-items: center;
+  justify-content: center;
+  min-height: var(--cm-header-height);
   padding: var(--cm-space-sm) var(--cm-space-md);
   background-color: var(--cm-surface);
   border-bottom: 1px solid var(--cm-border);
 }
 
-.site-header__brand {
+.header__brand {
   display: flex;
-  align-items: center;
   gap: var(--cm-space-xs);
-  font-size: 1.25rem;
+  align-items: center;
+  color: var(--cm-text);
+  font-size: 1.0625rem;
   font-weight: 700;
+  text-decoration: none;
 }
 
-.site-header__logo {
-  font-size: 1.5rem;
-}
-
-.nav-list {
+.nav {
   display: flex;
   gap: var(--cm-space-md);
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.nav-list__link {
+.nav__link {
+  display: block;
+  padding: var(--cm-space-xs) 0;
+  border-bottom: 2px solid transparent;
   color: var(--cm-text-muted);
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.nav-list__link:hover,
-.nav-list__link:focus-visible {
+.nav__link:hover,
+.nav__link:focus-visible {
+  border-bottom-color: var(--cm-primary);
   color: var(--cm-primary);
 }
 
-/* Hero */
+/* ==========================================================================
+   Hero
+   ========================================================================== */
 
 .hero {
-  text-align: center;
   padding: var(--cm-space-xl) var(--cm-space-md);
+  text-align: center;
 }
 
 .hero__title {
   margin: 0 0 var(--cm-space-sm);
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 800;
-  color: var(--cm-primary-dark);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-.hero__subtitle {
+.hero__text {
+  max-width: 38rem;
   margin: 0 auto;
-  max-width: 40rem;
   color: var(--cm-text-muted);
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
 }
 
-/* Card grid: mobil 1 Spalte, ab Tablet 2, ab Desktop 3 */
+/* ==========================================================================
+   Section
+   ========================================================================== */
 
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--cm-space-md);
+.section {
   max-width: 72rem;
   margin: 0 auto;
   padding: 0 var(--cm-space-md) var(--cm-space-xl);
 }
 
-@media (min-width: 600px) {
-  .card-grid {
+.section__label {
+  margin: 0 0 var(--cm-space-md);
+  color: var(--cm-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Cards — one column on mobile, two from 768px, three from 1024px
+   ========================================================================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cm-space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 992px) {
-  .card-grid {
+@media (min-width: 1024px) {
+  .cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .card {
-  background-color: var(--cm-surface);
-  border: 1px solid var(--cm-border);
-  border-radius: var(--cm-radius);
-  box-shadow: var(--cm-shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-xs);
+  height: 100%;
   padding: var(--cm-space-md);
-  text-align: center;
+  background-color: var(--cm-surface);
+  border: 1.5px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+/* focus-within gives keyboard users the same cue as hover gives mouse users */
+.card:hover,
+.card:focus-within {
+  border-color: var(--cm-primary);
+  background-color: var(--cm-primary-soft);
 }
 
 .card__icon {
-  font-size: 2rem;
-  margin-bottom: var(--cm-space-xs);
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: var(--cm-primary);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .card__title {
-  margin: 0 0 var(--cm-space-xs);
-  font-size: 1.25rem;
-  color: var(--cm-primary-dark);
+  margin: 0;
+  font-size: 1.125rem;
 }
 
 .card__text {
@@ -140,16 +250,60 @@ body {
   color: var(--cm-text-muted);
 }
 
-/* Footer */
-
-.site-footer {
-  text-align: center;
-  padding: var(--cm-space-md);
-  color: var(--cm-text-muted);
-  font-size: 0.875rem;
-  border-top: 1px solid var(--cm-border);
+.card__link {
+  display: flex;
+  gap: var(--cm-space-xs);
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--cm-space-sm);
+  color: var(--cm-primary);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.site-footer__text {
+/* Turns the whole card into the link's click target, keeping a single tab stop */
+.card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--cm-radius);
+}
+
+.card:hover .card__link,
+.card:focus-within .card__link {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cm-space-xs) var(--cm-space-md);
+  align-items: center;
+  justify-content: center;
+  padding: var(--cm-space-md);
+  border-top: 1px solid var(--cm-border);
+  color: var(--cm-text-muted);
+  font-size: 0.875rem;
+}
+
+.footer__text {
   margin: 0;
+}
+
+.footer__link {
+  display: flex;
+  gap: var(--cm-space-xs);
+  align-items: center;
+  color: var(--cm-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  text-decoration: underline;
 }

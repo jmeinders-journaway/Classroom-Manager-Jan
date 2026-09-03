@@ -7,57 +7,112 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header__brand">
-      <span class="site-header__logo" aria-hidden="true">🏫</span>
-      <span class="site-header__title">Classroom-Manager</span>
-    </div>
-    <nav class="site-header__nav" aria-label="Hauptnavigation">
-      <ul class="nav-list">
-        <li class="nav-list__item"><a class="nav-list__link" href="#klassen">Klassen</a></li>
-        <li class="nav-list__item"><a class="nav-list__link" href="#anwesenheiten">Anwesenheiten</a></li>
-        <li class="nav-list__item"><a class="nav-list__link" href="#kursbuch">Kursbuch</a></li>
+  <!-- Icon sprite: referenced via <use href="#icon-...">. Maybe use a external library when its not a prototype -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="icon-logo" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="8" height="8" rx="1.5" />
+      <rect x="13" y="3" width="8" height="8" rx="1.5" />
+      <rect x="3" y="13" width="8" height="8" rx="1.5" />
+      <rect x="13" y="13" width="8" height="8" rx="1.5" />
+    </symbol>
+    <symbol id="icon-classes" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="3.4" />
+      <path d="M5 20v-1.8a7 6 0 0 1 14 0V20" />
+    </symbol>
+    <symbol id="icon-attendance" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="m7.5 12.5 3 3 6-7" />
+    </symbol>
+    <symbol id="icon-coursebook" viewBox="0 0 24 24">
+      <path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3z" />
+      <path d="M21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z" />
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+      <path d="m6 15 6-6 6 6" />
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="header" id="seitenanfang">
+    <a class="header__brand" href="#seitenanfang">
+      <svg class="icon" aria-hidden="true"><use href="#icon-logo" /></svg>
+      Classroom-Manager
+    </a>
+
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav">
+        <li><a class="nav__link" href="#klassen">Klassen</a></li>
+        <li><a class="nav__link" href="#anwesenheiten">Anwesenheiten</a></li>
+        <li><a class="nav__link" href="#kursbuch">Kursbuch</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="inhalt">
     <section class="hero">
       <h1 class="hero__title">Classroom-Manager</h1>
-      <p class="hero__subtitle">
+      <p class="hero__text">
         Klassen, Anwesenheiten und Kursbuch der BBS 2 Leer – übersichtlich an einem Ort.
       </p>
     </section>
 
-    <section class="card-grid" aria-label="Funktionsübersicht">
-      <article id="klassen" class="card">
-        <div class="card__icon" aria-hidden="true">👥</div>
-        <h2 class="card__title">Klassen</h2>
-        <p class="card__text">
-          Alle Klassen und Schüler:innen im Überblick verwalten und schnell wiederfinden.
-        </p>
-      </article>
+    <section class="section" aria-labelledby="schnellzugriff">
+      <h2 class="section__label" id="schnellzugriff">Schnellzugriff</h2>
 
-      <article id="anwesenheiten" class="card">
-        <div class="card__icon" aria-hidden="true">✅</div>
-        <h2 class="card__title">Anwesenheiten</h2>
-        <p class="card__text">
-          Anwesenheiten pro Stunde erfassen und den Verlauf jederzeit nachvollziehen.
-        </p>
-      </article>
+      <ul class="cards">
+        <li>
+          <article class="card" id="klassen">
+            <svg class="card__icon" aria-hidden="true"><use href="#icon-classes" /></svg>
+            <h3 class="card__title">Klassen</h3>
+            <p class="card__text">
+              Alle Klassen und Schüler:innen im Überblick verwalten und schnell wiederfinden.
+            </p>
+            <a class="card__link" href="#klassen">
+              Klassen öffnen
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </li>
 
-      <article id="kursbuch" class="card">
-        <div class="card__icon" aria-hidden="true">📖</div>
-        <h2 class="card__title">Kursbuch</h2>
-        <p class="card__text">
-          Unterrichtsinhalte und Themen dokumentieren – digital statt auf Papier.
-        </p>
-      </article>
+        <li>
+          <article class="card" id="anwesenheiten">
+            <svg class="card__icon" aria-hidden="true"><use href="#icon-attendance" /></svg>
+            <h3 class="card__title">Anwesenheiten</h3>
+            <p class="card__text">
+              Anwesenheiten pro Stunde erfassen und den Verlauf jederzeit nachvollziehen.
+            </p>
+            <a class="card__link" href="#anwesenheiten">
+              Anwesenheit erfassen
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </li>
+
+        <li>
+          <article class="card" id="kursbuch">
+            <svg class="card__icon" aria-hidden="true"><use href="#icon-coursebook" /></svg>
+            <h3 class="card__title">Kursbuch</h3>
+            <p class="card__text">
+              Unterrichtsinhalte und Themen dokumentieren – digital statt auf Papier.
+            </p>
+            <a class="card__link" href="#kursbuch">
+              Eintrag ergänzen
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p class="site-footer__text">&copy; 2026 Classroom-Manager Prototyp &middot; BBS 2 Leer</p>
+  <footer class="footer">
+    <p class="footer__text">&copy; 2026 Classroom-Manager &middot; BBS 2 Leer</p>
+    <a class="footer__link" href="#seitenanfang">
+      <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up" /></svg>
+      Nach oben
+    </a>
   </footer>
+
 </body>
 </html>
