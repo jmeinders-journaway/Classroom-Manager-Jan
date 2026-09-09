@@ -75,6 +75,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
+  min-width: 0;
 }
 
 .student-card__class {
@@ -97,4 +98,17 @@ main {
   border-top: 1px solid var(--cm-border);
   color: var(--cm-text-muted);
   font-size: var(--cm-font-label);
+}
+
+/* --------------------------------------------------------------------------
+   Breakpoints
+  -------------------------------------------------------------------------- */
+
+/* 36em (576px): card content turns from a stack into a row */
+@media (min-width: 36em) {
+  .student-card {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--cm-space-md);
+  }
 }
