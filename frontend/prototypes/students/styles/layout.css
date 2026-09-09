@@ -1,3 +1,100 @@
 /* ==========================================================================
    Layout: grid, cards, media queries
+   Mobile first - the rules below are the narrow-screen layout, breakpoints
+   only add to them.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Page header
+   -------------------------------------------------------------------------- */
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-xs);
+  padding: var(--cm-space-lg) var(--cm-space-md) var(--cm-space-md);
+}
+
+.page-header__brand {
+  color: var(--cm-primary);
+  font-size: var(--cm-font-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.page-header__meta {
+  color: var(--cm-text-muted);
+  font-size: var(--cm-font-label);
+}
+
+/* --------------------------------------------------------------------------
+   Student grid
+   -------------------------------------------------------------------------- */
+
+main {
+  padding: 0 var(--cm-space-md) var(--cm-space-lg);
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cm-space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Student card
+   -------------------------------------------------------------------------- */
+
+.student-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-sm);
+  height: 100%;
+  padding: var(--cm-space-md);
+  background-color: var(--cm-surface);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+}
+
+.student-card__initials {
+  display: grid;
+  place-items: center;
+  /* flex: none keeps the circle round once the card turns into a row */
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--cm-primary-soft);
+  border: 1px solid var(--cm-primary);
+  border-radius: 50%;
+  color: var(--cm-primary);
+  font-weight: 700;
+}
+
+.student-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.student-card__class {
+  color: var(--cm-text-muted);
+  font-size: var(--cm-font-label);
+  font-weight: 500;
+}
+
+.student-card__id {
+  color: var(--cm-text-muted);
+  font-size: var(--cm-font-label);
+}
+
+/* --------------------------------------------------------------------------
+   Page footer
+   -------------------------------------------------------------------------- */
+
+.page-footer {
+  padding: var(--cm-space-md);
+  border-top: 1px solid var(--cm-border);
+  color: var(--cm-text-muted);
+  font-size: var(--cm-font-label);
+}
