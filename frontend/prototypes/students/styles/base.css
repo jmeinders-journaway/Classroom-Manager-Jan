@@ -1,3 +1,99 @@
 /* ==========================================================================
    Base: design tokens, reset, typography
+   Contains no class selectors on purpose - component styling lives in layout.css.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  --cm-bg: #f2f4f8;
+  --cm-surface: #ffffff;
+  --cm-text: #1b2430;
+  --cm-text-muted: #5b6472;
+  --cm-border: #c3c9d3;
+  --cm-primary: #1d4ed8;
+  --cm-primary-soft: rgba(29, 78, 216, 0.07);
+
+  /* Fixed spacing for small, structural gaps */
+  --cm-space-xs: 0.5rem;
+  --cm-space-sm: 0.75rem;
+
+  /* Fluid spacing: grows with the viewport instead of jumping at a breakpoint */
+  --cm-space-md: clamp(1rem, 2.5vw, 1.5rem);
+  --cm-space-lg: clamp(1.5rem, 5vw, 3rem);
+
+  /* Fluid type: floor for narrow screens, ceiling so it stops growing */
+  --cm-font-title: clamp(1.75rem, 6vw, 2.75rem);
+  --cm-font-name: clamp(1.0625rem, 2vw, 1.25rem);
+  --cm-font-label: 0.8125rem;
+
+  --cm-radius: 0.625rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cm-bg: #12161c;
+    --cm-surface: #1a1f27;
+    --cm-text: #e7eaf1;
+    --cm-text-muted: #9aa4b2;
+    --cm-border: #39424f;
+    --cm-primary: #7aa2ff;
+    --cm-primary-soft: rgba(122, 162, 255, 0.1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Spacing comes from gap in layout.css, not from inherited element margins */
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   Base elements
+   -------------------------------------------------------------------------- */
+
+body {
+  margin: 0;
+  background-color: var(--cm-bg);
+  color: var(--cm-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  /* Keeps a long name from pushing the card wider than the viewport */
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--cm-font-title);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--cm-font-name);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 3px solid var(--cm-primary);
+  outline-offset: 2px;
+}
