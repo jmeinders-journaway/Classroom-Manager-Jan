@@ -112,3 +112,25 @@ main {
     gap: var(--cm-space-md);
   }
 }
+
+/* 48em (768px): two columns */
+@media (min-width: 48em) {
+  .student-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 64em (1024px): three columns, content capped so cards stop stretching */
+@media (min-width: 64em) {
+  .student-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .page-header,
+  main,
+  .page-footer {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+}
