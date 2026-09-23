@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schüler:in hinzufügen – Classroom-Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="validation.js" defer></script>
+</head>
+<body>
+  <header class="page-header">
+    <p class="page-header__brand">Classroom-Manager</p>
+    <h1>Schüler:in hinzufügen</h1>
+  </header>
+
+  <main>
+    <form class="form" method="post">
+      <p class="form__status" role="status" aria-live="polite"></p>
+
+      <fieldset class="fieldset">
+        <legend class="fieldset__legend">Persönliche Daten</legend>
+
+        <div class="field">
+          <label class="field__label" for="first-name">Vorname</label>
+          <input
+            class="field__input"
+            id="first-name"
+            name="firstName"
+            type="text"
+            autocomplete="given-name"
+            aria-describedby="first-name-error"
+            required
+          />
+          <p class="field__error" id="first-name-error">Bitte gib einen Vornamen ein.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="last-name">Nachname</label>
+          <input
+            class="field__input"
+            id="last-name"
+            name="lastName"
+            type="text"
+            autocomplete="family-name"
+            aria-describedby="last-name-error"
+            required
+          />
+          <p class="field__error" id="last-name-error">Bitte gib einen Nachnamen ein.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="email">E-Mail</label>
+          <input
+            class="field__input"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            aria-describedby="email-hint email-error"
+            required
+          />
+          <p class="field__hint" id="email-hint">Schulische Adresse, zum Beispiel vorname.nachname@bbs2leer.de</p>
+          <p class="field__error" id="email-error">Bitte gib eine gültige E-Mail-Adresse ein, inklusive @.</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset" aria-describedby="class-error">
+        <legend class="fieldset__legend">Klasse</legend>
+
+        <div class="choice">
+          <input class="choice__input" id="class-fi24a" name="schoolClass" type="radio" value="FI24A" required />
+          <label class="choice__label" for="class-fi24a">FI24A</label>
+        </div>
+
+        <div class="choice">
+          <input class="choice__input" id="class-fi24b" name="schoolClass" type="radio" value="FI24B" />
+          <label class="choice__label" for="class-fi24b">FI24B</label>
+        </div>
+
+        <p class="field__error" id="class-error">Bitte wähle eine Klasse aus.</p>
+      </fieldset>
+
+      <button class="button" type="submit">Schüler:in hinzufügen</button>
+    </form>
+  </main>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 Classroom-Manager &middot; BBS 2 Leer</p>
+  </footer>
+</body>
+</html>
