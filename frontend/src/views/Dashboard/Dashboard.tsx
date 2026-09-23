@@ -6,7 +6,7 @@ export default function Dashboard() {
     <Container className="py-5">
       {/* Header Bereich */}
       <header className="mb-5 text-center p-4 dashboard-header rounded-3 shadow-sm">
-        <h1 className="display-5 fw-bold text-primary">🏫 Classroom-Manager</h1>
+        <h1 className="display-5 fw-bold text-primary"><span aria-hidden="true">🏫 </span>Classroom-Manager</h1>
         <p className="lead text-muted">Projekt-Skeleton — Ausgangslage für FIAE Lernfelder 10a+11a</p>
         <span className="badge bg-success px-3 py-2">Status: Fullstack-Verbindung aktiv</span>
       </header>
@@ -16,8 +16,8 @@ export default function Dashboard() {
         {/* Linke Spalte: Status & Sandbox */}
         <Col md={6}>
           <Card className="h-100 shadow-sm border-0 sandbox-card">
-            <Card.Header className="bg-primary text-white fw-bold">
-              🧪 Live-Schnittstelle & API-Test
+            <Card.Header as="h2" className="bg-primary text-white fw-bold fs-6">
+              <span aria-hidden="true">🧪 </span>Live-Schnittstelle & API-Test
             </Card.Header>
             <Card.Body className="d-flex flex-column justify-content-between">
               <div>
@@ -30,7 +30,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <div>
-                <h6 className="fw-bold text-muted mb-2">Arbeitsauftrag für den Einstieg:</h6>
+                <h3 className="fw-bold text-muted fs-6 mb-2">Arbeitsauftrag für den Einstieg:</h3>
                 <p className="small text-muted mb-3">
                   Öffne die Entwicklertools deines Browsers mit <strong>F12</strong> und wechsle in die <strong>Konsole (Console)</strong>. Dort siehst du die importierten Daten aus der Express-API.
                 </p>
@@ -49,8 +49,8 @@ export default function Dashboard() {
         {/* Rechte Spalte: Nächste Schritte */}
         <Col md={6}>
           <Card className="h-100 shadow-sm border-0 steps-card">
-            <Card.Header className="bg-secondary text-white fw-bold">
-              🚀 Nächste Entwicklungsschritte
+            <Card.Header as="h2" className="bg-secondary text-white fw-bold fs-6">
+              <span aria-hidden="true">🚀 </span>Nächste Entwicklungsschritte
             </Card.Header>
             <Card.Body>
               <Card.Text>
