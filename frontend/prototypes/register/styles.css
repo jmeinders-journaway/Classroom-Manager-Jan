@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
+:root {
+  --cm-bg: #f2f4f8;
+  --cm-surface: #ffffff;
+  --cm-text: #1b2430;
+  --cm-text-muted: #5b6472;
+  --cm-border: #c3c9d3;
+  --cm-primary: #1d4ed8;
+  --cm-error: #b3261e;
+  --cm-on-primary: #ffffff;
+
+  --cm-space-xs: 0.375rem;
+  --cm-space-sm: 0.75rem;
+  --cm-space-md: 1.25rem;
+  --cm-space-lg: 2rem;
+
+  --cm-radius: 0.5rem;
+
+  --cm-focus-width: 3px;
+  --cm-focus-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cm-bg: #12161c;
+    --cm-surface: #1a1f27;
+    --cm-text: #e7eaf1;
+    --cm-text-muted: #9aa4b2;
+    --cm-border: #39424f;
+    --cm-primary: #7aa2ff;
+    --cm-error: #ffb4ab;
+    --cm-on-primary: #12161c;
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+p,
+legend {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cm-bg);
+  color: var(--cm-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Focus states
+   One rule for everything focusable. Documented in docs/ux/focus-states.md.
+   ========================================================================== */
+
+:focus-visible {
+  outline: var(--cm-focus-width) solid var(--cm-primary);
+  outline-offset: var(--cm-focus-offset);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Page frame
+   ========================================================================== */
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-xs);
+  padding: var(--cm-space-lg) var(--cm-space-md) var(--cm-space-md);
+}
+
+.page-header__brand {
+  color: var(--cm-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+main {
+  padding: 0 var(--cm-space-md) var(--cm-space-lg);
+}
+
+.page-footer {
+  padding: var(--cm-space-md);
+  border-top: 1px solid var(--cm-border);
+  color: var(--cm-text-muted);
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-md);
+  max-width: 34rem;
+}
+
+.form__status:empty {
+  display: none;
+}
+
+.form__status {
+  padding: var(--cm-space-sm) var(--cm-space-md);
+  background-color: var(--cm-surface);
+  border-left: 4px solid var(--cm-primary);
+  border-radius: var(--cm-radius);
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-md);
+  margin: 0;
+  padding: var(--cm-space-md);
+  background-color: var(--cm-surface);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+}
+
+.fieldset__legend {
+  padding: 0 var(--cm-space-xs);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Field
+   ========================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cm-space-xs);
+}
+
+.field__label {
+  font-weight: 600;
+}
+
+.field__input {
+  padding: var(--cm-space-sm);
+  background-color: var(--cm-surface);
+  color: var(--cm-text);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  font: inherit;
+}
+
+.field__hint {
+  color: var(--cm-text-muted);
+  font-size: 0.8125rem;
+}
+
+/* Error text stays in the DOM so aria-describedby can point at it, and is
+   revealed only once the field is actually invalid after user input. */
+.field__error {
+  display: none;
+  color: var(--cm-error);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* :user-invalid fires after interaction, unlike :invalid, which would flag
+   every empty required field on page load. */
+.field__input:user-invalid {
+  border-color: var(--cm-error);
+  border-width: 2px;
+}
+
+.field__input:user-invalid ~ .field__error,
+.fieldset:has(.choice__input:user-invalid) .field__error {
+  display: block;
+}
+
+/* ==========================================================================
+   Radio choice
+   ========================================================================== */
+
+.choice {
+  display: flex;
+  gap: var(--cm-space-sm);
+  align-items: center;
+}
+
+.choice__input {
+  /* 1.25rem keeps the control itself above the 24px minimum target size */
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--cm-primary);
+}
+
+.choice__label {
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.button {
+  align-self: flex-start;
+  min-height: 2.75rem;
+  padding: var(--cm-space-sm) var(--cm-space-lg);
+  background-color: var(--cm-primary);
+  color: var(--cm-on-primary);
+  border: none;
+  border-radius: var(--cm-radius);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
