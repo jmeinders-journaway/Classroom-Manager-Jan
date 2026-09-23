@@ -80,6 +80,16 @@ h1 {
    Page frame
    ========================================================================== */
 
+/* One centred column for header, form and footer so they share an edge
+   instead of the form clinging to the left on a wide screen. */
+.page-header,
+main,
+.page-footer {
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
 .page-header {
   display: flex;
   flex-direction: column;
@@ -114,7 +124,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--cm-space-md);
-  max-width: 34rem;
 }
 
 .form__status:empty {
